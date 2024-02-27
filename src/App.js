@@ -1,13 +1,16 @@
-import './App.css';
-import PopularMovieSection from './components/Sections/PopularMovieSection';
+import { BrowserRouter } from 'react-router-dom';
+import BodyRoute from './Routes';
 import NavBar from './components/navbar/NavBar';
+import 'swiper/css';
 
 function App() {
   return (
-    <div className='bg-[#2b3035] h-screen px-6'>
-      <NavBar />
-      <PopularMovieSection />
-    </div>
+    <BrowserRouter>
+      <div className='bg-[#2b3035] px-6 min-h-screen'>
+        <NavBar />
+        <BodyRoute />
+      </div>
+    </BrowserRouter>
   );
 }
 

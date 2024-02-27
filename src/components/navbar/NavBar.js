@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
+import { BiMoviePlay } from 'react-icons/bi';
+import { Link, useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const navigate = useNavigate();
   return (
     <div className='py-6 bg-[#2b3035]'>
       <div className='flex align-middle justify-between'>
-        <div>
-          <h1 className='text-white text-3xl font-bold'>CineCrate</h1>
-        </div>
+        <Link to={'/'}>
+          <div className='flex items-center'>
+            <span className='mr-2'>
+              <BiMoviePlay color='white' size={28} />
+            </span>
+            <h1 className='text-white text-3xl font-bold'>CineCrate</h1>
+          </div>
+        </Link>
         <div
           onClick={() => setIsOpen(true)}
           className={`flex items-center text-white  px-3 rounded-md ${
@@ -26,7 +33,12 @@ const NavBar = () => {
               type='text'
             />
           </div>
-          <div onClick={() => {}} className='ml-2 cursor-pointer'>
+          <div
+            onClick={() => {
+              navigate('/search', { replace: true });
+            }}
+            className='ml-2 cursor-pointer'
+          >
             <IoSearch />
           </div>
         </div>
