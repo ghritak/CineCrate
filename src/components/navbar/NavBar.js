@@ -5,7 +5,24 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (isOpen) {
+      if (searchTerm.trim() !== '') {
+        const queryString = new URLSearchParams({ searchTerm }).toString();
+        navigate(`/search?${queryString}`);
+      }
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div className='py-6 bg-[#2b3035]'>
       <div className='flex align-middle justify-between'>
@@ -26,6 +43,10 @@ const NavBar = () => {
           <p className={isOpen ? 'border-r-[1px] pr-2 mr-2' : ''}>Search</p>
           <div>
             <input
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              autoFocus
+              onKeyDown={handleKeyPress}
               className={`bg-[#2b3035]  outline-none border border-transparent transition-all duration-200 ${
                 isOpen ? 'w-[300px]' : 'w-0'
               }`}
@@ -33,12 +54,7 @@ const NavBar = () => {
               type='text'
             />
           </div>
-          <div
-            onClick={() => {
-              navigate('/search', { replace: true });
-            }}
-            className='ml-2 cursor-pointer'
-          >
+          <div onClick={handleSearch} className='ml-2 cursor-pointer'>
             <IoSearch />
           </div>
         </div>

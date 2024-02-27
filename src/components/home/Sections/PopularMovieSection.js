@@ -16,15 +16,10 @@ const PopularMovieSection = () => {
         slidesPerView={4.5}
         onSlideChange={() => {}}
         onSwiper={(swiper) => {}}
-        // autoplay={{
-        //   delay: 4000,
-        //   // disableOnInteraction: false,
-        // }}
-        // modules={[Autoplay]}
       >
         {popularMovies.map((item) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={item?.imdbID}>
               <MovieCard item={item} />
             </SwiperSlide>
           );

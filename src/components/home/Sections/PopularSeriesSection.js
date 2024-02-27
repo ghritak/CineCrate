@@ -24,7 +24,7 @@ const PopularSeriesSection = () => {
       >
         {popularSeries.map((item) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={item?.imdbID}>
               <MovieCard item={item} />
             </SwiperSlide>
           );
