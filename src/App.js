@@ -2,13 +2,17 @@ import { BrowserRouter } from 'react-router-dom';
 import BodyRoute from './Routes';
 import NavBar from './components/navbar/NavBar';
 import 'swiper/css';
+import Footer from './components/footer/Footer';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className='bg-[#2b3035] px-6 min-h-screen'>
+      <div className='flex flex-col min-h-screen px-6'>
         <NavBar />
-        <BodyRoute />
+        <div className='flex-1 overflow-y-auto'>
+          <BodyRoute />
+        </div>
+        <Footer />
       </div>
     </BrowserRouter>
   );

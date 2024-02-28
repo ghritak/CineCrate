@@ -6,7 +6,7 @@ import { IoPlayCircleOutline } from 'react-icons/io5';
 const MovieCard = ({ item }) => {
   return (
     <div className='text-white'>
-      <div className='cursor-pointer hover:scale-[98%] transition-all duration-300 group w-[270px]'>
+      <div className='cursor-pointer hover:scale-[98%] transition-all duration-300 group w-[180px] md:w-60 lg:w-[270px]'>
         <div className='relative'>
           {item?.Poster !== 'N/A' ? (
             <img
@@ -16,9 +16,9 @@ const MovieCard = ({ item }) => {
               loading='lazy'
             />
           ) : (
-            <div className='bg-gray-300 w-[270px] h-[390px] animate-pulse' />
+            <div className='bg-gray-300 w-[180px] md:w-60 lg:w-[270px] h-[100px] md:h-[200px] lg:h-[390px] animate-pulse' />
           )}
-          <div className='absolute w-[270px] h-[390px] bg-black bg-opacity-50 top-0 opacity-0 group-hover:opacity-100 justify-center items-center flex transition-opacity ease-in-out duration-500'>
+          <div className='absolute w-[180px] md:w-60 lg:w-[270px] h-[100px] md:h-[200px] lg:h-[390px] bg-black bg-opacity-50 top-0 opacity-0 group-hover:opacity-100 justify-center items-center flex transition-opacity ease-in-out duration-500'>
             <IoPlayCircleOutline color='white' size={100} />
           </div>
         </div>

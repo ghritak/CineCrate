@@ -2,8 +2,9 @@ import React from 'react';
 import Heading from '../../elements/Heading';
 import MovieCard from '../../cards/MovieCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import { popularMovies } from './constans';
+import { popularMovies } from './data';
+import { Link } from 'react-router-dom';
+import { breakpoints } from './constants';
 
 const PopularMovieSection = () => {
   return (
@@ -14,14 +15,17 @@ const PopularMovieSection = () => {
       <Swiper
         spaceBetween={10}
         slidesPerView={4.5}
+        breakpoints={breakpoints}
         onSlideChange={() => {}}
         onSwiper={(swiper) => {}}
       >
         {popularMovies.map((item) => {
           return (
-            <SwiperSlide key={item?.imdbID}>
-              <MovieCard item={item} />
-            </SwiperSlide>
+            <Link to='/movie'>
+              <SwiperSlide key={item?.imdbID}>
+                <MovieCard item={item} />
+              </SwiperSlide>
+            </Link>
           );
         })}
         ...
