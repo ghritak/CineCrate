@@ -3,7 +3,6 @@ import Heading from '../../elements/Heading';
 import MovieCard from '../../cards/MovieCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { popularMovies } from './data';
-import { Link } from 'react-router-dom';
 import { breakpoints } from './constants';
 
 const PopularMovieSection = () => {
@@ -21,11 +20,9 @@ const PopularMovieSection = () => {
       >
         {popularMovies.map((item) => {
           return (
-            <Link to='/movie'>
-              <SwiperSlide key={item?.imdbID}>
-                <MovieCard item={item} />
-              </SwiperSlide>
-            </Link>
+            <SwiperSlide key={item?.imdbID}>
+              <MovieCard item={item} />
+            </SwiperSlide>
           );
         })}
         ...

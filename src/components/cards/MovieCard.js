@@ -2,11 +2,19 @@ import React from 'react';
 import SubHeading from '../elements/SubHeading';
 import { FaStar } from 'react-icons/fa6';
 import { IoPlayCircleOutline } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 
 const MovieCard = ({ item }) => {
+  const navigate = useNavigate();
+  const id = item?.imdbID;
+  const queryString = new URLSearchParams({ id }).toString();
+
   return (
     <div className='text-white'>
-      <div className='cursor-pointer hover:scale-[98%] transition-all duration-300 group w-[180px] md:w-60 lg:w-[270px]'>
+      <div
+        onClick={() => navigate(`/movie?${queryString}`)}
+        className='cursor-pointer hover:scale-[98%] transition-all duration-300 group w-[180px] md:w-60 lg:w-[270px]'
+      >
         <div className='relative'>
           {item?.Poster !== 'N/A' ? (
             <img

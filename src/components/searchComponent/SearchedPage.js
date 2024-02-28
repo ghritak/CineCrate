@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Heading from '../elements/Heading';
 import { useLocation } from 'react-router-dom';
 import MovieCard from '../cards/MovieCard';
 
@@ -11,7 +10,6 @@ const SearchedPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log('okay rerun');
     fetchData(searchTerm);
   }, [searchTerm]);
 
@@ -37,7 +35,7 @@ const SearchedPage = () => {
 
   return (
     <div className='mx-10'>
-      <p className='text-white mb-6'>
+      <p className='text-white mb-6 ml-8'>
         {!loading && `Search results for "${searchTerm}"`}
       </p>
       {!loading ? (
