@@ -14,6 +14,8 @@ const DetailPage = ({ bookmarkData, setBookmarkData }) => {
   const movie_id = queryParams.get('id');
   const [movieData, setMovieData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const movie = movieData?.Title;
+  const queryString = new URLSearchParams({ movie }).toString();
 
   useEffect(() => {
     localStorage.setItem('bookmarkData', JSON.stringify(bookmarkData));
@@ -112,7 +114,10 @@ const DetailPage = ({ bookmarkData, setBookmarkData }) => {
           <p>Actors: {movieData?.Actors}</p>
           <p>Awards: {movieData?.Awards}</p>
           <p>Language: {movieData?.Language}</p>
-          <Button onPress={() => navigate('/watch')} title='Watch Online' />
+          <Button
+            onPress={() => navigate(`/watch?${queryString}`)}
+            title='Watch Online'
+          />
         </div>
       </div>
     </div>
