@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import 'swiper/css';
 import { BrowserRouter } from 'react-router-dom';
 import BodyRoute from './Routes';
