@@ -12,6 +12,7 @@ const DetailPage = ({ bookmarkData, setBookmarkData }) => {
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const movie_id = queryParams.get('id');
+  const API_KEY = process.env.REACT_APP_API_KEY;
   const [movieData, setMovieData] = useState(null);
   const [loading, setLoading] = useState(true);
   const movie = movieData?.Title;
@@ -29,7 +30,7 @@ const DetailPage = ({ bookmarkData, setBookmarkData }) => {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://www.omdbapi.com/?i=${movie_id}&apikey=c09ad111`
+        `http://www.omdbapi.com/?i=${movie_id}&apikey=${API_KEY}`
       );
       if (!response.ok) {
         throw new Error('Failed to fetch data');

@@ -6,6 +6,7 @@ const SearchedPage = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const searchTerm = queryParams.get('searchTerm');
+  const API_KEY = process.env.REACT_APP_API_KEY;
   const [searchedData, setSearchedData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -17,7 +18,7 @@ const SearchedPage = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://www.omdbapi.com/?s=${searchTerm}&page=2&apikey=c09ad111`
+        `http://www.omdbapi.com/?s=${searchTerm}&page=2&apikey=${API_KEY}`
       );
       if (!response.ok) {
         throw new Error('Failed to fetch data');
