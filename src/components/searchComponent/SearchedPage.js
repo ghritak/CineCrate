@@ -19,7 +19,7 @@ const SearchedPage = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://www.omdbapi.com/?s=${searchTerm}&page=2&apikey=${API_KEY}`
+        `https://www.omdbapi.com/?s=${searchTerm}&page=2&apikey=${API_KEY}`
       );
       if (!response.ok) {
         throw new Error('Failed to fetch data');

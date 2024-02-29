@@ -7,6 +7,7 @@ import { GiTomato } from 'react-icons/gi';
 import Skeleton from '../elements/Skeleton';
 import { IoBookmark, IoBookmarkOutline } from 'react-icons/io5';
 import Button from '../elements/Button';
+import NotFound from '../elements/NotFound';
 
 const DetailPage = ({ bookmarkData, setBookmarkData }) => {
   const location = useLocation();
@@ -31,7 +32,7 @@ const DetailPage = ({ bookmarkData, setBookmarkData }) => {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://www.omdbapi.com/?i=${movie_id}&apikey=${API_KEY}`
+        `https://www.omdbapi.com/?i=${movie_id}&apikey=${API_KEY}`
       );
       if (!response.ok) {
         throw new Error('Failed to fetch data');
@@ -66,62 +67,66 @@ const DetailPage = ({ bookmarkData, setBookmarkData }) => {
 
   return (
     <div className='mx-10 mt-20 flex flex-col align-middle justify-center text-white'>
-      <div className='flex justify-between items-start'>
-        <div className=' w-1/2 flex justify-center'>
-          {movieData?.Poster !== 'N/A' ? (
-            <img
-              src={movieData?.Poster}
-              alt={'Movie Poster'}
-              style={{ width: 360, height: 530 }}
-              loading='lazy'
-              className='rounded-md'
-            />
-          ) : (
-            <div className='bg-gray-300 w-[180px] md:w-60 lg:w-[270px] h-[100px] md:h-[200px] lg:h-[390px] animate-pulse' />
-          )}
-        </div>
-        <div className='w-1/2 space-y-4 pr-20'>
-          <div className='flex items-center space-x-4'>
-            <h1 className='text-3xl font-extrabold'>{movieData?.Title}</h1>
-            <div
-              onClick={handleBookmark}
-              className='cursor-pointer hover:bg-[#3a404d] p-3 rounded-full transition-all duration-200'
-            >
-              <div>
-                {bookmarkData[movie_id] ? (
-                  <IoBookmark size={22} />
-                ) : (
-                  <IoBookmarkOutline size={22} />
-                )}
+      {movieData ? (
+        <div className='flex justify-between items-start'>
+          <div className=' w-1/2 flex justify-center'>
+            {movieData?.Poster !== 'N/A' ? (
+              <img
+                src={movieData?.Poster}
+                alt={'Movie Poster'}
+                style={{ width: 360, height: 530 }}
+                loading='lazy'
+                className='rounded-md'
+              />
+            ) : (
+              <div className='bg-gray-300 w-[180px] md:w-60 lg:w-[270px] h-[100px] md:h-[200px] lg:h-[390px] animate-pulse' />
+            )}
+          </div>
+          <div className='w-1/2 space-y-4 pr-20'>
+            <div className='flex items-center space-x-4'>
+              <h1 className='text-3xl font-extrabold'>{movieData?.Title}</h1>
+              <div
+                onClick={handleBookmark}
+                className='cursor-pointer hover:bg-[#3a404d] p-3 rounded-full transition-all duration-200'
+              >
+                <div>
+                  {bookmarkData[movie_id] ? (
+                    <IoBookmark size={22} />
+                  ) : (
+                    <IoBookmarkOutline size={22} />
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-          <p>{movieData?.Plot}</p>
-          <p>Genre: {movieData?.Genre}</p>
-          <p>
-            Director: <span className='font-bold'>{movieData?.Director}</span>
-          </p>
-          <p>Writer: {movieData?.Writer}</p>
-          <div className='my-3'>
-            <div className='flex items-center flex-wrap gap-3'>
-              {movieData?.Ratings.map((item, idx) => {
-                return <RatingsComponent key={idx} data={item} />;
-              })}
+            <p>{movieData?.Plot}</p>
+            <p>Genre: {movieData?.Genre}</p>
+            <p>
+              Director: <span className='font-bold'>{movieData?.Director}</span>
+            </p>
+            <p>Writer: {movieData?.Writer}</p>
+            <div className='my-3'>
+              <div className='flex items-center flex-wrap gap-3'>
+                {movieData?.Ratings.map((item, idx) => {
+                  return <RatingsComponent key={idx} data={item} />;
+                })}
+              </div>
             </div>
+            <div className='flex items-center'>
+              <p className='mr-10'>Run Time: {movieData?.Runtime}</p>
+              <p>Year: {movieData?.Year}</p>
+            </div>
+            <p>Actors: {movieData?.Actors}</p>
+            <p>Awards: {movieData?.Awards}</p>
+            <p>Language: {movieData?.Language}</p>
+            <Button
+              onPress={() => navigate(`/watch?${queryString}`)}
+              title='Watch Online'
+            />
           </div>
-          <div className='flex items-center'>
-            <p className='mr-10'>Run Time: {movieData?.Runtime}</p>
-            <p>Year: {movieData?.Year}</p>
-          </div>
-          <p>Actors: {movieData?.Actors}</p>
-          <p>Awards: {movieData?.Awards}</p>
-          <p>Language: {movieData?.Language}</p>
-          <Button
-            onPress={() => navigate(`/watch?${queryString}`)}
-            title='Watch Online'
-          />
         </div>
-      </div>
+      ) : (
+        <NotFound />
+      )}
     </div>
   );
 };

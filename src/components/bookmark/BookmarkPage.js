@@ -5,23 +5,29 @@ const BookmarkPage = ({ bookmarkData }) => {
   const [activeTab, setActiveTab] = useState('movie');
 
   return (
-    <div className='mx-10 mt-14'>
+    <div className='mx-10 mt-14 text-white'>
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      <div className='flex flex-wrap '>
-        {bookmarkData &&
-          Object.values(bookmarkData).map((item) => {
-            if (activeTab !== item?.Type) return null;
-            return (
-              <div
-                key={item?.imdbID}
-                className='w-1/4 mb-10 flex justify-center'
-              >
-                <MovieCard item={item} />
-              </div>
-            );
-          })}
-      </div>
+      {Object.values(bookmarkData).find((item) => item?.Type === activeTab) ? (
+        <div className='flex flex-wrap '>
+          {bookmarkData &&
+            Object.values(bookmarkData).map((item) => {
+              if (activeTab !== item?.Type) return null;
+              return (
+                <div
+                  key={item?.imdbID}
+                  className='w-1/4 mb-10 flex justify-center'
+                >
+                  <MovieCard item={item} />
+                </div>
+              );
+            })}
+        </div>
+      ) : (
+        <div className='h-[400px] flex items-center justify-center'>
+          There is no {activeTab} bookmarked
+        </div>
+      )}
     </div>
   );
 };
@@ -34,7 +40,6 @@ const Tabs = ({ activeTab, setActiveTab }) => {
     }
     return 0;
   };
-  //Testing git
 
   return (
     <div className='mb-14 flex justify-center text-white'>
