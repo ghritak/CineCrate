@@ -19,14 +19,13 @@ const WatchPage = () => {
   const [isLoading, setLoading] = useState(true);
   const [isPlaying, setPlaying] = useState(false);
   const [showButtons, setShowButtons] = useState(true);
-  const [isPaused, setPaused] = useState(false);
   const movieRef = useRef(null);
 
   useEffect(() => {
     setTimeout(() => {
       setPlaying(true);
       setShowButtons(false);
-    }, 1000);
+    }, 5000);
   }, []);
 
   const handleMouseMove = () => {
