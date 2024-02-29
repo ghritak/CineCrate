@@ -5,6 +5,7 @@ import SearchedPage from './components/searchComponent/SearchedPage';
 import DetailPage from './components/detailPage/DetailPage';
 import BookmarkPage from './components/bookmark/BookmarkPage';
 import WatchPage from './components/watchPage/WatchPage';
+import NotFound from './components/elements/NotFound';
 
 const BodyRoute = ({ setBookmarkData, bookmarkData }) => {
   return (
@@ -32,6 +33,7 @@ const BodyRoute = ({ setBookmarkData, bookmarkData }) => {
           element={<BookmarkPage bookmarkData={bookmarkData} />}
         />
         <Route exact path='/watch' element={<WatchPage />} />
+        <Route exact path='*' element={<NotFound />} />
       </Routes>
     </div>
   );
