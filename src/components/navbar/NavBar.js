@@ -25,20 +25,22 @@ const NavBar = ({ bookmarkData }) => {
   };
 
   return (
-    <div className='py-6 bg-[#2b3035] mx-10'>
-      <div className='flex align-middle justify-between'>
+    <div className='py-6 bg-[#2b3035]'>
+      <div className='align-middle justify-between flex'>
         <Link to={'/'}>
           <div className='flex items-center'>
-            <span className='mr-2'>
-              <BiMoviePlay color='white' size={28} />
+            <span className='mr-2 text-lg sm:text-xl md:text-3xl'>
+              <BiMoviePlay color='white' />
             </span>
-            <h1 className='text-white text-3xl font-bold'>CineCrate</h1>
+            <h1 className='text-white text-lg sm:text-2xl md:text-3xl font-bold'>
+              CineCrate
+            </h1>
           </div>
         </Link>
-        <div className='flex items-center text-white space-x-5'>
+        <div className='flex items-center text-white space-x-1 md:space-x-5'>
           <div
             onClick={() => setIsOpen(true)}
-            className={`flex items-center h-9 px-3 rounded-md ${
+            className={`flex items-center h-7 md:h-9 px-2 md:px-3 rounded-md text-xs xs:text-sm md:text-md ${
               isOpen ? 'border-white border-[1px]' : 'cursor-pointer'
             }`}
           >
@@ -49,14 +51,19 @@ const NavBar = ({ bookmarkData }) => {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 autoFocus
                 onKeyDown={handleKeyPress}
-                className={`bg-[#2b3035]  outline-none border border-transparent transition-all duration-200 ${
-                  isOpen ? 'w-[300px]' : 'w-0'
+                className={`bg-[#2b3035] outline-none border border-transparent transition-all duration-200 ${
+                  isOpen
+                    ? 'w-[80px] xs:w-[100px] sm:w-[160px] n:w-[300px]'
+                    : 'w-0'
                 }`}
                 placeholder='Game of Thrones...'
                 type='text'
               />
             </div>
-            <div onClick={handleSearch} className='ml-2 cursor-pointer'>
+            <div
+              onClick={handleSearch}
+              className='ml-2 cursor-pointer text-sm md:text-md'
+            >
               <IoSearch />
             </div>
           </div>
@@ -64,7 +71,7 @@ const NavBar = ({ bookmarkData }) => {
             onClick={() => navigate('/bookmarks')}
             className='flex items-center space-x-2 cursor-pointer relative'
           >
-            <p>Bookmarks</p>
+            <p className='hidden md:block'>Bookmarks</p>
             <IoBookmarkOutline />
             <span className='absolute -top-2 -right-2 w-4 h-4 text-xs flex justify-center items-center rounded-full bg-red-400'>
               {Object.keys(bookmarkData).length}

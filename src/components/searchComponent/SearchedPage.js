@@ -36,7 +36,7 @@ const SearchedPage = () => {
   };
 
   return (
-    <div className='mx-10'>
+    <div className=''>
       <p className='text-white mb-6 ml-8'>
         {!loading && `Search results for "${searchTerm}"`}
       </p>
@@ -48,7 +48,7 @@ const SearchedPage = () => {
               return (
                 <div
                   key={item?.imdbID}
-                  className='w-1/4 mb-10 flex justify-center'
+                  className='w-1/2 xxs:w-1/3 xl:w-1/4 mb-10 flex justify-center'
                 >
                   <MovieCard item={item} />
                 </div>
@@ -59,8 +59,11 @@ const SearchedPage = () => {
         <div className='flex flex-wrap'>
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item) => {
             return (
-              <div key={item} className='w-1/4 mb-10 flex justify-center'>
-                <div className='w-[270px] h-[400px] animate-pulse bg-gray-300' />
+              <div
+                key={item}
+                className='w-1/2 xxs:w-1/3 xl:w-1/4 mb-10 flex justify-center'
+              >
+                <div className=' w-[100px] h-[150px] xxs:w-[110px] xxs:h-[170px] xs:w-[120px] xs:h-[170px] sm:w-[160px] sm:h-[240px] md:w-[220px] md:h-[330px] lg:w-[270px] lg:h-[390px] animate-pulse bg-gray-300' />
               </div>
             );
           })}

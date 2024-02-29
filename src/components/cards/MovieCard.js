@@ -13,34 +13,40 @@ const MovieCard = ({ item }) => {
     <div className='text-white'>
       <div
         onClick={() => navigate(`/movie?${queryString}`)}
-        className='cursor-pointer hover:scale-[98%] transition-all duration-300 group w-[180px] md:w-60 lg:w-[270px]'
+        className='cursor-pointer hover:scale-[98%] transition-all duration-300 group w-[100px] xxs:w-[110px] xs:w-[120px] sm:w-[160px] md:w-[220px] lg:w-[270px]'
       >
         <div className='relative'>
           {item?.Poster !== 'N/A' ? (
             <img
               src={item?.Poster}
               alt={'Movie Poster'}
-              style={{ width: 270, height: 390 }}
+              className='w-[100px] h-[150px] xxs:w-[110px] xxs:h-[170px] xs:w-[120px] xs:h-[170px] sm:w-[160px] sm:h-[240px] md:w-[220px] md:h-[330px] lg:w-[270px] lg:h-[390px]'
               loading='lazy'
             />
           ) : (
-            <div className='bg-gray-300 w-[180px] md:w-60 lg:w-[270px] h-[100px] md:h-[200px] lg:h-[390px] animate-pulse' />
+            <div className='bg-gray-300 w-[100px] h-[150px] xxs:w-[110px] xxs:h-[170px] xs:w-[120px] xs:h-[170px] sm:w-[160px] sm:h-[240px] md:w-[220px] md:h-[330px] lg:w-[270px] lg:h-[390px] animate-pulse' />
           )}
-          <div className='absolute w-[180px] md:w-60 lg:w-[270px] h-[100px] md:h-[200px] lg:h-[390px] bg-black bg-opacity-50 top-0 opacity-0 group-hover:opacity-100 justify-center items-center flex transition-opacity ease-in-out duration-500'>
+          <div className='absolute w-[100px] h-[150px] xxs:w-[110px] xxs:h-[170px] xs:w-[120px] xs:h-[170px] sm:w-[160px] sm:h-[240px] md:w-[220px] md:h-[330px] lg:w-[270px] lg:h-[390px] bg-black bg-opacity-50 top-0 opacity-0 group-hover:opacity-100 justify-center items-center flex transition-opacity ease-in-out duration-500'>
             <IoPlayCircleOutline color='white' size={100} />
           </div>
         </div>
         <div className='mt-2'>
-          <SubHeading text={item?.Title} />
+          <span className='line-clamp-1'>
+            <SubHeading text={item?.Title} line1 />
+          </span>
           {item.imdbRating && (
             <div className='flex items-center mb-1'>
-              <p className='font-semibold'>IMDB Rating {item?.imdbRating}</p>
-              <span className='ml-1 mb-[2px]'>
+              <p className='font-semibold text-xs md:text-sm lg:text-md'>
+                IMDB Rating {item?.imdbRating}
+              </p>
+              <span className='ml-1 mb-[2px] text-xs md:text-sm lg:text-md'>
                 <FaStar color='#DCC204' />
               </span>
             </div>
           )}
-          <p className='line-clamp-2'>{item?.Plot}</p>
+          <p className='line-clamp-2 text-xxs sm:text-xs md:text-sm'>
+            {item?.Plot}
+          </p>
         </div>
       </div>
     </div>

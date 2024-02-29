@@ -7,7 +7,7 @@ import { breakpoints } from './constants';
 
 const PopularMovieSection = () => {
   return (
-    <div className='mt-10'>
+    <div>
       <div className=''>
         <Heading text={'Popular Movies'} />
       </div>
@@ -25,7 +25,6 @@ const PopularMovieSection = () => {
             </SwiperSlide>
           );
         })}
-        ...
       </Swiper>
     </div>
   );

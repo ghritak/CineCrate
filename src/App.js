@@ -16,7 +16,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className='flex flex-col min-h-screen px-6'>
+      <div className='flex flex-col min-h-screen px-6 xxs:mx-4 xs:mx-6 sm:mx-10'>
         <NavBar bookmarkData={bookmarkData} />
         <div className='flex-1 overflow-y-auto'>
           <BodyRoute

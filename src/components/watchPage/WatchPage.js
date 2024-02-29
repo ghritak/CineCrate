@@ -36,14 +36,20 @@ const WatchPage = () => {
   };
 
   return (
-    <div onMouseMove={handleMouseMove} className='absolute inset-0 bg-black'>
+    <div
+      onMouseMove={handleMouseMove}
+      className='absolute inset-0 bg-black overflow-hidden'
+    >
       <div
         className={`absolute z-40 top-3 left-8 w-screen flex items-center transition-opacity duration-300 ${
           showButtons ? 'opacity-100' : 'opacity-0'
         }`}
       >
-        <div onClick={() => navigate(-1)} className='cursor-pointer mr-6'>
-          <IoIosArrowBack size={36} color='white' />
+        <div
+          onClick={() => navigate(-1)}
+          className='cursor-pointer mr-6 text-sm sm:text-lg md:text-2xl lg:text-4xl mb-2 sm:mb-4 lg:mb-6'
+        >
+          <IoIosArrowBack color='white' />
         </div>
         <Heading text={movieName} showLine={false} />
       </div>
@@ -53,7 +59,7 @@ const WatchPage = () => {
         } transition-opacity duration-500`}
       >
         {isLoading && (
-          <div className='w-60 h-60 rotate'>
+          <div className='w-32 h-32 md:w-60 md:h-60 rotate'>
             <LoaderComponent />
           </div>
         )}
@@ -64,7 +70,7 @@ const WatchPage = () => {
           isPlaying ? 'opacity-100' : 'opacity-0'
         } transition-opacity duration-500`}
       >
-        <div className=''>
+        <div className='w-40 h-40 sm:w-80 sm:h-80 md:w-auto md:h-auto'>
           <MovieComponent isLoading={isLoading} movieRef={movieRef} />
         </div>
       </div>

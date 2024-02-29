@@ -66,34 +66,33 @@ const DetailPage = ({ bookmarkData, setBookmarkData }) => {
   if (loading) return <DetailSkeleton />;
 
   return (
-    <div className='mx-10 mt-20 flex flex-col align-middle justify-center text-white'>
+    <div className='mt-10 lg:mt-20 flex flex-col align-middle justify-center text-white'>
       {movieData ? (
-        <div className='flex justify-between items-start'>
-          <div className=' w-1/2 flex justify-center'>
+        <div className='sm:flex justify-between items-start'>
+          <div className='sm:w-1/2 flex justify-center'>
             {movieData?.Poster !== 'N/A' ? (
               <img
                 src={movieData?.Poster}
                 alt={'Movie Poster'}
-                style={{ width: 360, height: 530 }}
+                className='rounded-md w-[260px] h-[340px] xs:w-[360px] xs:h-[530px] sm:w-[240px] sm:h-[330px]  md:w-[300px] md:h-[430px] lg:w-[360px] lg:h-[530px]'
                 loading='lazy'
-                className='rounded-md'
               />
             ) : (
               <div className='bg-gray-300 w-[180px] md:w-60 lg:w-[270px] h-[100px] md:h-[200px] lg:h-[390px] animate-pulse' />
             )}
           </div>
-          <div className='w-1/2 space-y-4 pr-20'>
-            <div className='flex items-center space-x-4'>
-              <h1 className='text-3xl font-extrabold'>{movieData?.Title}</h1>
+          <div className='sm:w-1/2 space-y-4 lg:pr-20 text-sm lg:text-md mt-6 sm:mt-0'>
+            <div className='flex items-center space-x-4 text-lg md:text-xl lg:text-3xl'>
+              <h1 className=' font-extrabold'>{movieData?.Title}</h1>
               <div
                 onClick={handleBookmark}
                 className='cursor-pointer hover:bg-[#3a404d] p-3 rounded-full transition-all duration-200'
               >
                 <div>
                   {bookmarkData[movie_id] ? (
-                    <IoBookmark size={22} />
+                    <IoBookmark />
                   ) : (
-                    <IoBookmarkOutline size={22} />
+                    <IoBookmarkOutline />
                   )}
                 </div>
               </div>
@@ -136,7 +135,7 @@ const RatingsComponent = ({ data }) => {
     data?.Source === 'Internet Movie Database' ? 'CineCrate' : data?.Source;
 
   return (
-    <div className='flex items-center gap-2 mr-10'>
+    <div className='flex items-center gap-2 mr-10 text-sm lg:text-md'>
       {name === 'CineCrate' ? (
         <BiMoviePlay />
       ) : name === 'Rotten Tomatoes' ? (
@@ -157,21 +156,22 @@ const RatingsComponent = ({ data }) => {
 
 const DetailSkeleton = () => {
   return (
-    <div className='mx-10 mt-20 flex flex-col align-middle justify-center text-white'>
-      <div className='flex justify-between items-start'>
-        <div className=' w-1/2 flex justify-center'>
-          <Skeleton w={360} h={530} />
+    <div className='mt-20 flex flex-col align-middle justify-center text-white'>
+      <div className='sm:flex justify-between items-start'>
+        <div className=' sm:w-1/2 flex justify-center'>
+          <div className='rounded-md w-[260px] h-[340px] xs:w-[360px] xs:h-[530px] sm:w-[240px] sm:h-[330px]  md:w-[300px] md:h-[430px] lg:w-[360px] lg:h-[530px] bg-gray-300 animate-pulse' />
         </div>
-        <div className='w-1/2 space-y-6 pr-20'>
-          <Skeleton h1 w={300} />
+        <div className='sm:w-1/2 space-y-6 sm:pr-20 mt-6 sm:mt-0'>
+          <div className='h-[40px] w-[200px] lg:w-[300px] animate-pulse bg-gray-300 rounded-md' />
           <div className='space-y-2'>
-            <Skeleton para w={600} />
-            <Skeleton para w={500} />
-            <Skeleton para w={400} />
+            <div className='h-[14px] w-[280px] xxs:w-[320px] xs:w-[420px] sm:w-[280px] md:w-[340px] lg:w-[440px] animate-pulse bg-gray-300 rounded-md' />
+            <div className='h-[14px] w-[240px] xs:w-[300px] md:w-[320px] lg:w-[380px] animate-pulse bg-gray-300 rounded-md' />
+            <div className='h-[14px] w-[200px] xs:w-[280px] md:w-[280px] lg:w-[320px] animate-pulse bg-gray-300 rounded-md' />
           </div>
-          <Skeleton para w={300} />
-          <Skeleton para w={250} />
-          <Skeleton para w={300} />
+          <div className='h-[14px] w-[200px] animate-pulse bg-gray-300 rounded-md' />
+          <div className='h-[14px] w-[250px] animate-pulse bg-gray-300 rounded-md' />
+          <div className='h-[14px] w-[200px] animate-pulse bg-gray-300 rounded-md' />
+
           <div className='my-3'>
             <div className='flex items-center mb-3 space-x-4'>
               <Skeleton h2 w={160} />
@@ -183,8 +183,9 @@ const DetailSkeleton = () => {
             <Skeleton para w={100} />
             <Skeleton para w={100} />
           </div>
-          <Skeleton para w={300} />
-          <Skeleton para w={300} />
+          <div className='h-[14px] w-[240px] animate-pulse bg-gray-300 rounded-md' />
+          <div className='h-[14px] w-[240px] animate-pulse bg-gray-300 rounded-md' />
+
           <Skeleton para w={160} />
         </div>
       </div>
