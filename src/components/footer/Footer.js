@@ -6,7 +6,7 @@ const Footer = () => {
       <div className='container mx-auto'>
         <div className='flex justify-between items-center'>
           <div className='text-xxs sm:text-sm md:text-sm'>
-            &copy; 2024 CineCrate
+            &copy; {new Date().getFullYear()} CineCrate
           </div>
           <div className='text-xxs sm:text-sm md:text-sm'>
             Developed by <span className='font-bold'>Ghritak Jyoti Kalita</span>
