@@ -3,6 +3,7 @@ import { IoSearch } from 'react-icons/io5';
 import { BiMoviePlay } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoBookmarkOutline } from 'react-icons/io5';
+import Logo from '../../assets/favicon.ico';
 
 const NavBar = ({ bookmarkData }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,10 +31,11 @@ const NavBar = ({ bookmarkData }) => {
         <Link to={'/'}>
           <div className='flex items-center'>
             <span className='mr-2 text-lg sm:text-xl md:text-3xl'>
-              <BiMoviePlay color='white' />
+              <img src={Logo} alt='logo' className='w-7 md:w-10 rounded-lg' />
             </span>
             <h1 className='text-white text-lg sm:text-2xl md:text-3xl font-bold'>
-              CineCrate
+              <span style={{ color: '#af1d4c' }}>Cine</span>
+              <span className='text-gray-300'>Crate</span>
             </h1>
           </div>
         </Link>
