@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
-import { BiMoviePlay } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoBookmarkOutline } from 'react-icons/io5';
 import Logo from '../../assets/favicon.ico';
