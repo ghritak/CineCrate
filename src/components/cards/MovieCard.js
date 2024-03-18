@@ -27,7 +27,10 @@ const MovieCard = ({ item }) => {
             <div className='bg-gray-300 w-[100px] h-[150px] xxs:w-[110px] xxs:h-[170px] xs:w-[120px] xs:h-[170px] sm:w-[160px] sm:h-[240px] md:w-[220px] md:h-[330px] lg:w-[270px] lg:h-[390px] animate-pulse' />
           )}
           <div className='absolute w-[100px] h-[150px] xxs:w-[110px] xxs:h-[170px] xs:w-[120px] xs:h-[170px] sm:w-[160px] sm:h-[240px] md:w-[220px] md:h-[330px] lg:w-[270px] lg:h-[390px] bg-black bg-opacity-50 top-0 opacity-0 group-hover:opacity-100 justify-center items-center flex transition-opacity ease-in-out duration-500'>
-            <IoPlayCircleOutline color='white' size={100} />
+            <IoPlayCircleOutline
+              color='white'
+              className='w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28'
+            />
           </div>
         </div>
         <div className='mt-2'>
