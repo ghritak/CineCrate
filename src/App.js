@@ -14,8 +14,6 @@ function App() {
     setBookmarkData(bookmarkData__);
   }, []);
 
-  // Added some comment changes for review
-
   return (
     <BrowserRouter>
       <div className='flex flex-col min-h-screen px-6 xxs:mx-4 xs:mx-6 sm:mx-10'>
@@ -27,6 +25,23 @@ function App() {
           />
         </div>
         <Footer />
+      </div>
+      <div className='hidden'>
+        <div id='modal'>
+          <div>
+            <div id='modal-content'>
+              <div id='modal-header'>
+                <div id='modal-title'></div>
+              </div>
+              <div id='modal-body'>
+                <div id='modal-text'></div>
+              </div>
+              <div id='modal-footer'>
+                <div id='modal-buttons'></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </BrowserRouter>
   );
