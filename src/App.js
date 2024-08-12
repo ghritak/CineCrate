@@ -14,6 +14,8 @@ function App() {
     setBookmarkData(bookmarkData__);
   }, []);
 
+  // Added some comment changes for review
+
   return (
     <BrowserRouter>
       <div className='flex flex-col min-h-screen px-6 xxs:mx-4 xs:mx-6 sm:mx-10'>
